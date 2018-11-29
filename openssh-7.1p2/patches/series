@@ -1,0 +1,10 @@
+add-test-support-for-busybox.patch -p1
+CVE-2016-1907_upstream_commit.patch -p1
+CVE-2016-1907_2.patch -p1
+CVE-2016-1907_3.patch -p1
+CVE-2016-3115.patch -p1
+CVE-2016-6210.patch -p1
+CVE-2016-6210_p2.patch -p1
+CVE-2016-6210_p3.patch -p1
+CVE-2016-6515.patch -p1
+CVE-2015-8325.patch -p1

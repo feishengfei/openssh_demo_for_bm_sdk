@@ -1,0 +1,16 @@
+another thing you should check out:
+
+please make sure that SYSTEM_VOLUME_SIZE in 'bm_sdk/mdm-usr-image.sh' is "74MiB":
+
+```
+42 UBINIZE_ARGS="-m 4096 -p 256KiB -s 4096"
+43 UBINIZE_ARGS_2K="-m 2048 -p 128KiB -s 2048"
+44 
+45 SYSTEM_VOLUME_SIZE="74MiB"
+46 CACHE_VOLUME_SIZE="37MiB"
+47 DATA_VOLUME_SIZE="14MiB"
+```
+
+If SYSTEM_VOLUME_SIZE is 83MiB, after buring sysfs-2k.ubi, system maybe overwrite by sbak(system backup).
+
+The root cause is we shrink the system size in partition table.

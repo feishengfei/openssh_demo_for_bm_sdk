@@ -1,0 +1,52 @@
+# after run compile.sh, you need to manually install(rsync) files under sshd_install into 
+# bm_rootfs, and update some of files as following patches style shows
+
+0. install:
+
+```
+zhouxiang@qiao-ubuntu12:~/broadmobi_sdk_20180930/7.1p2-r0.5$ rsync -av sshd_install/ /mnt/work/zhouxiang/broadmobi_sdk_20180930/bm_rootfs/
+sending incremental file list
+./
+etc/
+etc/default/
+etc/default/ssh
+etc/default/volatiles/
+etc/default/volatiles/99_sshd
+etc/init.d/
+etc/init.d/sshd
+etc/ssh/
+etc/ssh/moduli
+etc/ssh/sshd_config
+etc/ssh/sshd_config_readonly
+usr/
+usr/bin/
+usr/bin/ssh-keygen
+usr/sbin/
+usr/sbin/sshd
+
+sent 1,684,123 bytes  received 219 bytes  3,368,684.00 bytes/sec
+total size is 1,682,895  speedup is 1.00
+```
+
+1. update shadow, group, passwd etc.
+
+please refer to passwd_group_shadow__for_sshd.patch, file includes:
+
+```
+zhouxiang@qiao-ubuntu12:~/broadmobi_sdk_20180930/bm_rootfs$ git diff --name-status 
+M       etc/group
+M       etc/group-
+M       etc/gshadow
+M       etc/passwd
+M       etc/passwd-
+M       etc/shadow
+```
+
+2. run sshd on board bootup, following will register sshd START at step 09 on rc 2,3,4,5 while stop STOP at step 09 on rc 0,1,6 (default as qualcom do)
+
+```
+zhouxiang@qiao-ubuntu12:~/broadmobi_sdk_20180930/bm_rootfs/etc$ for i in 2 3 4 5;do cd rc${i}.d/;ln -s ../init.d/sshd S09sshd;cd ..;done;
+zhouxiang@qiao-ubuntu12:~/broadmobi_sdk_20180930/bm_rootfs/etc$ for i in 0 1 6;do cd rc${i}.d/;ln -s ../init.d/sshd K09sshd;cd ..;done;
+```
+
+--end--

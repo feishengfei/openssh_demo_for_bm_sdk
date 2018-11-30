@@ -108,6 +108,9 @@ sed -i -e 's,@BASE_BINDIR@,${base_bindir},g' \
 cd ${WORKDIR}
 
 # collect minimal for sshd
+install -d ${D_sshd}/${bindir}
+install ${D}/${bindir}/ssh-keygen ${D_sshd}/${bindir}/ssh-keygen
+
 install -d ${D_sshd}/${sbindir}
 install ${D}/${sbindir}/sshd ${D_sshd}/${sbindir}/sshd
 
@@ -118,6 +121,7 @@ install ${D}/${sysconfdir}/ssh/sshd_config_readonly ${D_sshd}/${sysconfdir}/ssh/
 
 install -d ${D_sshd}/${sysconfdir}/default/volatiles
 install ${D}/${sysconfdir}/default/volatiles/99_sshd ${D_sshd}/${sysconfdir}/default/volatiles/99_sshd
+install ${D}/${sysconfdir}/default/ssh ${D_sshd}/${sysconfdir}/default/ssh
 
 install -d ${D_sshd}/${sysconfdir}/init.d
 install ${D}/${sysconfdir}/init.d/sshd ${D_sshd}/${sysconfdir}/init.d/sshd

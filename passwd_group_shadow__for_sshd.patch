@@ -1,0 +1,54 @@
+diff --git a/etc/group b/etc/group
+index 4a908ee..60fcddc 100644
+--- a/etc/group
++++ b/etc/group
+@@ -45,3 +45,4 @@ nogroup:x:65534:
+ netdev:x:999:
+ messagebus:x:998:
+ avahi:x:997:
++sshd:x:996:
+diff --git a/etc/group- b/etc/group-
+index 167ae5a..0d3764d 100644
+--- a/etc/group-
++++ b/etc/group-
+@@ -45,3 +45,4 @@ nogroup:*:65534:
+ netdev:x:999:
+ messagebus:!:998:
+ avahi:!:997:
++sshd:!:996:
+diff --git a/etc/gshadow b/etc/gshadow
+index 294efe4..2ad4c0f 100644
+--- a/etc/gshadow
++++ b/etc/gshadow
+@@ -45,3 +45,4 @@ nogroup:*::
+ netdev:x::
+ messagebus:!::
+ avahi:!::
++sshd:!::
+diff --git a/etc/passwd b/etc/passwd
+index 8634113..2f24571 100644
+--- a/etc/passwd
++++ b/etc/passwd
+@@ -19,3 +19,4 @@ diag:x:53:53:diag:/nonexistent:/bin/sh
+ nobody:x:65534:65534:nobody:/nonexistent:/bin/sh
+ messagebus:x:999:998::/var/lib/dbus:/bin/false
+ avahi:x:998:997::/var/run/avahi-daemon:/bin/false
++sshd:x:997:996::/var/run/sshd:/bin/false
+diff --git a/etc/passwd- b/etc/passwd-
+index c91630a..b729f7d 100644
+--- a/etc/passwd-
++++ b/etc/passwd-
+@@ -19,3 +19,4 @@ diag:*:53:53:diag:/nonexistent:/bin/sh
+ nobody:*:65534:65534:nobody:/nonexistent:/bin/sh
+ messagebus:!:999:998::/var/lib/dbus:/bin/false
+ avahi:!:998:997::/var/run/avahi-daemon:/bin/false
++sshd:!:997:996::/var/run/sshd:/bin/false
+diff --git a/etc/shadow b/etc/shadow
+index af6fd8b..274fc43 100644
+--- a/etc/shadow
++++ b/etc/shadow
+@@ -19,3 +19,4 @@ diag:*:17804:0:99999:7:::
+ nobody:*:17804:0:99999:7:::
+ messagebus:!:17804:0:99999:7:::
+ avahi:!:17804:0:99999:7:::
++sshd:!:17865:0:99999:7:::
